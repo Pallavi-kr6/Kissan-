@@ -18,6 +18,39 @@ export default function HomePage() {
   });
   const [result, setResult] = useState(null);
   const [calcErr, setCalcErr] = useState('');
+  
+  // Handlers (must be inside component to access state)
+  const handleReset = () => {
+    setCalc({
+      landSize: '',
+      fertilizerCostPerAcre: '',
+      seedCostPerAcre: '',
+      labourCostPerAcre: '',
+      sellingPricePerQuintal: '',
+      yieldPerAcre: '',
+    });
+    setResult(null);
+    setCalcErr('');
+  };
+
+  const handleCalculate = async (e) => {
+    e?.preventDefault?.();
+    setCalcErr('');
+    try {
+      const payload = {
+        landSize: Number(calc.landSize || 0),
+        fertilizerCostPerAcre: Number(calc.fertilizerCostPerAcre || 0),
+        seedCostPerAcre: Number(calc.seedCostPerAcre || 0),
+        labourCostPerAcre: Number(calc.labourCostPerAcre || 0),
+        sellingPricePerQuintal: Number(calc.sellingPricePerQuintal || 0),
+        yieldPerAcre: Number(calc.yieldPerAcre || 0),
+      };
+      const data = await postCalculate(payload);
+      setResult(data);
+    } catch (err) {
+      setCalcErr('Failed to calculate.');
+    }
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -178,15 +211,6 @@ async function postCalculate(body) {
   });
   if (!res.ok) throw new Error('Request failed');
   return res.json();
-}
-
-// Handlers bound to component state via closures
-function handleReset() {
-  // no-op placeholder, replaced when component renders
-}
-
-function handleCalculate(e) {
-  // no-op placeholder, replaced when component renders
 }
 
 
