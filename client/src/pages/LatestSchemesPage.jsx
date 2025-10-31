@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Card from '../components/Card.jsx';
 import Loader from '../components/Loader.jsx';
 import { useI18n } from '../i18n.jsx';
+import QuickNav from '../components/QuickNav.jsx';
 import { api } from '../services/api.js';
 
 export default function LatestSchemesPage() {
@@ -32,6 +33,7 @@ export default function LatestSchemesPage() {
       <div className="rounded-3xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-green-500 text-white p-6 md:p-8 shadow-lg">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight">{t('schemes_hero_title')}</h2>
         <p className="mt-2 text-emerald-50 max-w-2xl">{t('schemes_hero_sub')}</p>
+        <QuickNav className="mt-4" />
       </div>
 
       {loading && (

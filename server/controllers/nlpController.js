@@ -28,8 +28,8 @@ export async function askQuestion(req, res) {
     if (!apiKey) return res.status(500).json({ error: 'GEMINI_API_KEY not configured' });
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    // Use legacy widely-supported model name
-    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+    // Use widely supported latest alias
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash-latest' });
 
     const schemesCtx = await loadSchemesContext();
     const appCtx = `

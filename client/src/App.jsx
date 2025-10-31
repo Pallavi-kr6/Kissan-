@@ -1,6 +1,7 @@
 import { Routes, Route, NavLink } from 'react-router-dom';
 import { I18nProvider, useI18n } from './i18n.jsx';
 import LanguageSelector from './components/LanguageSelector.jsx';
+import ExpertChat from './components/ExpertChat.jsx';
 import HomePage from './pages/HomePage.jsx';
 import SubsidyPricesPage from './pages/SubsidyPricesPage.jsx';
 import LatestSchemesPage from './pages/LatestSchemesPage.jsx';
@@ -32,6 +33,7 @@ function AppShell() {
           <Route path="/disease" element={<DiseaseDetectionPage />} />
         </Routes>
       </main>
+      <ExpertChat />
       <footer className="border-t bg-white/70">
         <div className="max-w-6xl mx-auto px-4 py-6 text-sm text-gray-600 flex items-center justify-between">
           <span>© {new Date().getFullYear()} Kissan+</span>

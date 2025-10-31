@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Card from '../components/Card.jsx';
 import Loader from '../components/Loader.jsx';
 import { useI18n } from '../i18n.jsx';
+import QuickNav from '../components/QuickNav.jsx';
 import { api } from '../services/api.js';
 
 const STATES = [
@@ -32,7 +33,10 @@ export default function SubsidyPricesPage() {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold">{t('subsidy_title')}</h2>
+      <div className="rounded-3xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-green-500 text-white p-6 shadow-lg">
+        <h2 className="text-2xl md:text-3xl font-bold">{t('subsidy_title')}</h2>
+        <QuickNav className="mt-4" />
+      </div>
       <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 grid gap-4 sm:grid-cols-3">
         <div>
           <label className="block text-sm text-gray-700 mb-1">{t('subsidy_label_state')}</label>

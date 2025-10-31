@@ -3,6 +3,7 @@ import Card from '../components/Card.jsx';
 import Loader from '../components/Loader.jsx';
 import { api } from '../services/api.js';
 import { useI18n } from '../i18n.jsx';
+import QuickNav from '../components/QuickNav.jsx';
 
 export default function DiseaseDetectionPage() {
   const { t } = useI18n();
@@ -47,7 +48,10 @@ export default function DiseaseDetectionPage() {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold">{t('disease_title')}</h2>
+      <div className="rounded-3xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-green-500 text-white p-6 shadow-lg">
+        <h2 className="text-2xl md:text-3xl font-bold">{t('disease_title')}</h2>
+        <QuickNav className="mt-4" />
+      </div>
       <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 grid gap-6 sm:grid-cols-2">
         <div>
           <label className="block text-sm text-gray-700 mb-2">{t('disease_upload_label')}</label>

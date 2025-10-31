@@ -2,11 +2,22 @@ import { useI18n } from '../i18n.jsx';
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { fetchWeather } from '../services/api.js';
+import QuickNav from '../components/QuickNav.jsx';
 
 export default function HomePage() {
   const { t } = useI18n();
   const [weather, setWeather] = useState(null);
   const [wErr, setWErr] = useState('');
+  const [calc, setCalc] = useState({
+    landSize: '',
+    fertilizerCostPerAcre: '',
+    seedCostPerAcre: '',
+    labourCostPerAcre: '',
+    sellingPricePerQuintal: '',
+    yieldPerAcre: '',
+  });
+  const [result, setResult] = useState(null);
+  const [calcErr, setCalcErr] = useState('');
 
   useEffect(() => {
     let cancelled = false;
@@ -44,11 +55,7 @@ export default function HomePage() {
       <section className="rounded-3xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-green-500 text-white p-8 shadow-xl">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight">{t('home_title')}</h2>
         <p className="mt-2 text-emerald-50 max-w-2xl">{t('home_sub')}</p>
-        <div className="mt-6 flex gap-3 flex-wrap">
-          <NavLink to="/subsidy" className="px-5 py-2.5 rounded-lg bg-white text-emerald-700 font-medium hover:bg-emerald-50">{t('nav_subsidy')}</NavLink>
-          <NavLink to="/schemes" className="px-5 py-2.5 rounded-lg bg-white/10 text-white font-medium border border-white/20 hover:bg-white/15">{t('nav_schemes')}</NavLink>
-          <NavLink to="/disease" className="px-5 py-2.5 rounded-lg bg-white/10 text-white font-medium border border-white/20 hover:bg-white/15">{t('nav_disease')}</NavLink>
-        </div>
+        <QuickNav className="mt-6" />
       </section>
 
       {weather && (
@@ -73,6 +80,58 @@ export default function HomePage() {
         </section>
       )}
 
+      {/* Profit & Cost Calculator */}
+      <section>
+        <div className="rounded-2xl bg-white border border-gray-100 p-5 shadow-sm space-y-4">
+          <div className="text-xl font-semibold">Profit & Cost Calculator</div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div>
+              <label className="block text-sm text-gray-700 mb-1">Land Size (acres)</label>
+              <input className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" value={calc.landSize} onChange={e=>setCalc(v=>({...v, landSize:e.target.value}))} inputMode="decimal" />
+            </div>
+            <div>
+              <label className="block text-sm text-gray-700 mb-1">Fertilizer Cost (₹/acre)</label>
+              <input className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" value={calc.fertilizerCostPerAcre} onChange={e=>setCalc(v=>({...v, fertilizerCostPerAcre:e.target.value}))} inputMode="decimal" />
+            </div>
+            <div>
+              <label className="block text-sm text-gray-700 mb-1">Seed Cost (₹/acre)</label>
+              <input className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" value={calc.seedCostPerAcre} onChange={e=>setCalc(v=>({...v, seedCostPerAcre:e.target.value}))} inputMode="decimal" />
+            </div>
+            <div>
+              <label className="block text-sm text-gray-700 mb-1">Labour Cost (₹/acre)</label>
+              <input className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" value={calc.labourCostPerAcre} onChange={e=>setCalc(v=>({...v, labourCostPerAcre:e.target.value}))} inputMode="decimal" />
+            </div>
+            <div>
+              <label className="block text-sm text-gray-700 mb-1">Selling Price (₹/quintal)</label>
+              <input className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" value={calc.sellingPricePerQuintal} onChange={e=>setCalc(v=>({...v, sellingPricePerQuintal:e.target.value}))} inputMode="decimal" />
+            </div>
+            <div>
+              <label className="block text-sm text-gray-700 mb-1">Expected Yield (quintals/acre)</label>
+              <input className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" value={calc.yieldPerAcre} onChange={e=>setCalc(v=>({...v, yieldPerAcre:e.target.value}))} inputMode="decimal" />
+            </div>
+          </div>
+          <div className="flex gap-3">
+            <button onClick={(e)=>handleCalculate(e)} className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg transition shadow-sm">Calculate</button>
+            <button onClick={handleReset} className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-lg transition">Reset</button>
+          </div>
+          {calcErr && <div className="text-red-600 text-sm">{calcErr}</div>}
+          {result && (
+            <div className="grid sm:grid-cols-3 gap-4">
+              <CalcStat title="Total Cost" value={formatInr(result.totals.cost)} />
+              <CalcStat title="Total Revenue" value={formatInr(result.totals.revenue)} />
+              <CalcStat title="Net Profit" value={formatInr(result.totals.profit)} />
+              <div className="sm:col-span-3 text-sm mt-1">
+                {result.perAcre.profit >= 0 ? (
+                  <span className="text-emerald-700">✅ You’ll make {formatInr(result.perAcre.profit)} profit per acre</span>
+                ) : (
+                  <span className="text-amber-700">⚠️ You may incur {formatInr(Math.abs(result.perAcre.profit))} loss per acre</span>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
       <section>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           <div className="rounded-2xl bg-white border border-gray-100 p-5 shadow-sm">
@@ -92,5 +151,44 @@ export default function HomePage() {
     </div>
   );
 }
+
+function CalcStat({ title, value }) {
+  return (
+    <div className="rounded-xl border border-gray-100 p-4 bg-gray-50">
+      <div className="text-sm text-gray-600">{title}</div>
+      <div className="text-xl font-semibold mt-1">{value}</div>
+    </div>
+  );
+}
+
+function formatInr(n) {
+  try {
+    return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 2 }).format(Number(n || 0));
+  } catch {
+    return `₹${Number(n || 0).toFixed(2)}`;
+  }
+}
+
+async function postCalculate(body) {
+  const base = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+  const res = await fetch(`${base}/calculateProfit`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) throw new Error('Request failed');
+  return res.json();
+}
+
+// Handlers bound to component state via closures
+function handleReset() {
+  // no-op placeholder, replaced when component renders
+}
+
+function handleCalculate(e) {
+  // no-op placeholder, replaced when component renders
+}
+
+
 
 
