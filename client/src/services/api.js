@@ -7,4 +7,13 @@ export const api = axios.create({
   timeout: 15000
 });
 
+export async function fetchWeather({ lat, lon, q, units = 'metric' } = {}) {
+  const params = {};
+  if (lat && lon) { params.lat = lat; params.lon = lon; }
+  if (q) params.q = q;
+  params.units = units;
+  const res = await api.get('/weather', { params });
+  return res.data;
+}
+
 

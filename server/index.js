@@ -6,6 +6,7 @@ import subsidyRoutes from './routes/subsidyRoutes.js';
 import schemeRoutes from './routes/schemeRoutes.js';
 import diseaseRoutes from './routes/diseaseRoutes.js';
 import askRoutes from './routes/askRoutes.js';
+import weatherRoutes from './routes/weatherRoutes.js';
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.use('/api/subsidy', subsidyRoutes);
 app.use('/api/schemes', schemeRoutes);
 app.use('/api/disease', diseaseRoutes);
 app.use('/api/ask', askRoutes);
+app.use('/api/weather', weatherRoutes);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
