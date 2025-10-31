@@ -1,4 +1,4 @@
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { I18nProvider, useI18n } from './i18n.jsx';
 import LanguageSelector from './components/LanguageSelector.jsx';
 import ExpertChat from './components/ExpertChat.jsx';
@@ -15,12 +15,6 @@ function AppShell() {
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <h1 className="font-semibold text-xl">{t('app_title')}</h1>
           <div className="flex items-center gap-4">
-            <nav className="hidden sm:flex gap-2">
-              <NavLink to="/" className={({isActive}) => `px-3 py-1.5 rounded-md transition ${isActive ? 'bg-white/15' : 'hover:bg-white/10'}`}>{t('nav_home')}</NavLink>
-              <NavLink to="/subsidy" className={({isActive}) => `px-3 py-1.5 rounded-md transition ${isActive ? 'bg-white/15' : 'hover:bg-white/10'}`}>{t('nav_subsidy')}</NavLink>
-              <NavLink to="/schemes" className={({isActive}) => `px-3 py-1.5 rounded-md transition ${isActive ? 'bg-white/15' : 'hover:bg-white/10'}`}>{t('nav_schemes')}</NavLink>
-              <NavLink to="/disease" className={({isActive}) => `px-3 py-1.5 rounded-md transition ${isActive ? 'bg-white/15' : 'hover:bg-white/10'}`}>{t('nav_disease')}</NavLink>
-            </nav>
             <LanguageSelector />
           </div>
         </div>

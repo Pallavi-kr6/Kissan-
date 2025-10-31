@@ -14,10 +14,37 @@ async function loadSchemes() {
   return cachedSchemes;
 }
 
+function langToTranslationKey(lang) {
+  const map = {
+    'en': 'english',
+    'hi': 'hindi',
+    'mr': 'marathi',
+    'ta': 'tamil'
+  };
+  return map[lang] || 'english';
+}
+
 export async function getLatestSchemes(req, res) {
   try {
     const schemes = await loadSchemes();
-    return res.json({ count: schemes.length, schemes });
+    const lang = (req.query?.lang || 'en').trim();
+    const transKey = langToTranslationKey(lang);
+
+    const mapped = schemes.map(scheme => {
+      const translation = scheme.translations?.[transKey] || scheme.translations?.english || '';
+      return {
+        short_name: scheme.short_name,
+        name: scheme.short_name,
+        description: translation,
+        ministry: '', // Add if needed in future
+        benefits: '',
+        eligibility: '',
+        more_info: '', // Add URLs if needed
+        notes: ''
+      };
+    });
+
+    return res.json({ count: mapped.length, schemes: mapped, lang, provider: 'static' });
   } catch (err) {
     console.error('Error fetching latest schemes:', err?.message);
     return res.status(500).json({ error: 'Failed to fetch latest schemes' });

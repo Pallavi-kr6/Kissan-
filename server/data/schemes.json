@@ -1,84 +1,74 @@
 [
   {
-    "name": "PM-Kisan (Pradhan Mantri Kisan Samman Nidhi)",
-    "short_name": "PM-Kisan",
-    "description": "Direct income support to small and marginal farmer families to supplement their financial needs.",
-    "ministry": "Ministry of Agriculture and Farmers Welfare",
-    "benefits": "Periodic direct benefit transfers to eligible farmer families",
-    "eligibility": "Land-holding farmer families (subject to scheme rules and exclusions)",
-    "more_info": "https://pmkisan.gov.in/",
-    "notes": "One of the flagship income support schemes for farmers."
+      "short_name": "PM-Kisan",
+      "translations": {
+          "english": "Direct income support to small and marginal farmer families to supplement their financial needs.",
+          "hindi": "लघु एवं सीमांत किसान परिवारों को उनके वित्तीय आवश्यकताओं के पूरक स्वरूप प्रत्यक्ष आय सहायता।",
+          "marathi": "लघू व मर्यादित शेतकरी कुटुंबांना त्यांच्या आर्थिक गरजांसाठी थेट उत्पन्न सहाय्यता.",
+          "tamil": "சிறிய மற்றும் நுனித் விவசாயி குடும்பங்களுக்கு அவர்களது நிதி தேவைகளுக்கு மித்தமாக நேரடி வருமான ஆதரவு."
+      }
   },
   {
-    "name": "PMFBY (Pradhan Mantri Fasal Bima Yojana)",
-    "short_name": "PMFBY",
-    "description": "Crop insurance scheme providing coverage and financial support to farmers suffering crop loss or damage from natural calamities, pests, and diseases.",
-    "ministry": "Ministry of Agriculture and Farmers Welfare",
-    "benefits": "Compensation/claims for crop losses to insured farmers",
-    "eligibility": "Farmers growing notified crops in notified areas (per scheme guidelines)",
-    "more_info": "https://pmfby.gov.in/",
-    "notes": "Operates through empanelled insurance companies; premium rates and coverage depend on crop/season."
+      "short_name": "PMFBY",
+      "translations": {
+          "english": "Crop insurance scheme providing coverage and financial support to farmers suffering crop loss or damage from natural calamities, pests, and diseases.",
+          "hindi": "प्राकृतिक आपदाएँ, कीट‑रोगों एवं बीमारियों से हुई फसल नुक्सान या क्षति के लिए किसानों को वित्तीय सहायता एवं बीमा कवरेज प्रदान करने वाली फसल बीमा योजना।",
+          "marathi": "नैसर्गिक आपत्ती, कीड व रोगांमुळे झालेल्या पिक नुकसानासाठी शेतकऱ्यांना कव्हरेज व आर्थिक सहाय्य पुरवणारी पिक विमा योजना.",
+          "tamil": "இயற்கை பேரழிவுகள், பூச்சி நோய்கள் மற்றும் நோய்களால் ஏற்பட்ட பயிர் நஷ்டத்திற்கு விவசாயிகளுக்கு காப்பீடு மற்றும் நிதி ஆதரவு வழங்கும் பயிர் காப்பீட்டு திட்டம்."
+      }
   },
   {
-    "name": "Kisan Credit Card (KCC)",
-    "short_name": "KCC",
-    "description": "Provides farmers with timely access to credit for crop production, equipment purchases and allied agricultural activities.",
-    "ministry": "Ministry of Finance / NABARD (implementation by banks)",
-    "benefits": "Short-term and medium-term loans at concessional rates, working capital support",
-    "eligibility": "Farmers with land records; as permitted banks may cover tenant farmers and others",
-    "more_info": "https://www.nabard.org/",
-    "notes": "Widely used channel for agricultural credit and subsidies."
+      "short_name": "KCC",
+      "translations": {
+          "english": "Provides farmers with timely access to credit for crop production, equipment purchases and allied agricultural activities.",
+          "hindi": "फसल उत्पादन, उपकरणे क्रय व सहायक कृषि गतिविधियों हेतु किसानों को समय‑समय पर उधार (क्रेडिट) उपलब्ध कराती सुविधा।",
+          "marathi": "पिक उत्पादन, उपकरण खरेदी व संबंधीत कृषी क्रियाकलापांसाठी शेतकऱ्यांना वेळेवर कर्ज प्रवेश सुविधा पुरवते.",
+          "tamil": "பயிர் உற்பத்தி, கருவிகள் வாங்குதல் மற்றும் இணை விவசாய நடவடிக்கைகளுக்கு விவசாயிகளுக்கு நேரத்த‑தேரான கடன் அணுகலை வழங்குகிறது."
+      }
   },
   {
-    "name": "e-NAM (National Agriculture Market)",
-    "short_name": "e-NAM",
-    "description": "An online trading platform that connects mandi yards across India for transparent pricing and better market access.",
-    "ministry": "Ministry of Agriculture and Farmers Welfare",
-    "benefits": "Better price discovery, pan-India buyer access, transparent auctioning",
-    "eligibility": "Registered farmers/traders on the platform",
-    "more_info": "https://enam.gov.in/",
-    "notes": "Promotes market integration and competitive pricing for agricultural produce."
+      "short_name": "e-NAM",
+      "translations": {
+          "english": "An online trading platform that connects mandi yards across India for transparent pricing and better market access.",
+          "hindi": "भारत के विभिन्न मंडियों को ऑनलाइन जोड़ने वाला व्यापार प्लेटफ़ॉर्म – पारदर्शी कीमत निर्धारण एवं बेहतर बाजार पहुँच के लिए।",
+          "marathi": "भारतभरातील मंडयांना ऑनलाईन जोडणारे व्यापार व्यासपीठ – पारदर्शक किंमत निर्धारण व उत्तम बाजार प्रवेशासाठी.",
+          "tamil": "இந்தியாவின் பல மண்டிகள் இணைந்த ஆன்லைன் வர்த்தக மையம் – स्पष्ट விலையில் வர்த்தகம் மற்றும் மேம்பட்ட சந்தை அணுகலை வழங்குகிறது."
+      }
   },
   {
-    "name": "Agriculture Infrastructure Fund",
-    "short_name": "AIF",
-    "description": "Provides financial assistance for development of post-harvest infrastructure, storage, and value chain projects.",
-    "ministry": "Ministry of Agriculture and Farmers Welfare",
-    "benefits": "Credit-linked support/loans and incentives for infrastructure projects",
-    "eligibility": "Farmers, Farmer Producer Organizations (FPOs), agri-entrepreneurs, startups and others",
-    "more_info": "https://agriinfra.dac.gov.in/",
-    "notes": "Encourages investment in agri-infrastructure to reduce post-harvest losses."
+      "short_name": "AIF",
+      "translations": {
+          "english": "Provides financial assistance for development of post‑harvest infrastructure, storage, and value chain projects.",
+          "hindi": "कटाई के बाद के अवसंरचना, भंडारण व मूल्य शृंखला परियोजनाओं के विकास हेतु वित्तीय सहायता।",
+          "marathi": "हंगामी उत्पादनानंतरची अवकासीय संरचना, साठवण व मूल्य साखळी प्रकल्पांच्या विकासासाठी आर्थिक सहाय्यता.",
+          "tamil": "அறுவடைக்குப் பிறகு உள்ள பொது கட்டமைப்பு, கையிருப்பு மற்றும் மதிப்பு சங்கிலி திட்டங்களுக்கான நிதி உதவி வழங்குகிறது."
+      }
   },
   {
-    "name": "Rashtriya Krishi Vikas Yojana (RKVY)",
-    "short_name": "RKVY",
-    "description": "Scheme to boost agricultural productivity and farmer incomes through state-level projects, grants and innovations.",
-    "ministry": "Ministry of Agriculture and Farmers Welfare",
-    "benefits": "Grants for state-level agri-projects, infrastructure and innovation interventions",
-    "eligibility": "State implementing agencies and beneficiaries under state projects",
-    "more_info": "https://data.gov.in/",
-    "notes": "Supports state-driven interventions to increase agriculture production."
+      "short_name": "RKVY",
+      "translations": {
+          "english": "Scheme to boost agricultural productivity and farmer incomes through state‑level projects, grants and innovations.",
+          "hindi": "कृषि उत्पादकता एवं किसान आय बढ़ाने हेतु राज्य‑स्तरीय परियोजनाओं, अनुदानों एवं नवाचारों के माध्यम से योजना।",
+          "marathi": "कृषी उत्पादन व शेतकरी उत्पन्न वाढवण्यासाठी राज्य–स्तरीय प्रकल्प, अनुदान व नवोपक्रमांद्वारे योजना.",
+          "tamil": "விவசாய உற்பத்தி மற்றும் விவசாயி வருமானத்தை உய்த்தெழுப்ப மாநில அளவிலான திட்டங்கள், гран்டுகள் மற்றும் புதுமைகள் மூலம் நடைபெறும் திட்டம்."
+      }
   },
   {
-    "name": "Soil Health Card (SHC) Scheme",
-    "short_name": "Soil Health Card",
-    "description": "Provides farmers with soil test reports and recommendations on fertilizer and nutrient application.",
-    "ministry": "Ministry of Agriculture and Farmers Welfare",
-    "benefits": "Soil nutrient status, crop-wise fertilizer advice, improved input-use efficiency",
-    "eligibility": "Farmers submitting soil samples for testing",
-    "more_info": "https://soilhealth.dac.gov.in/",
-    "notes": "Aimed at improving productivity and reducing excess fertilizer use."
+      "short_name": "Soil Health Card",
+      "translations": {
+          "english": "Provides farmers with soil test reports and recommendations on fertilizer and nutrient application.",
+          "hindi": "किसानों को मिट्टी परीक्षण रिपोर्ट एवं उर्वरक‑पोषक तत्वों की आवेदन संबंधी सुझाव उपलब्ध कराती योजना।",
+          "marathi": "शेतकऱ्यांना माती चाचणी अहवाल व खत / पोषक तत्व वापराची शिफारस देणारी योजना.",
+          "tamil": "விவசாயிகளுக்கு மண் பரிசோதனை அறிக்கைகள் மற்றும் உரம் மற்றும் தாது பயன்பாட்டு பரிந்துரைகள் வழங்கும் திட்டம்."
+      }
   },
   {
-    "name": "PM Kisan MaanDhan Yojana (PM-KMY)",
-    "short_name": "PM-KMY",
-    "description": "Pension scheme for small and marginal farmers providing post-retirement income support.",
-    "ministry": "Ministry of Agriculture and Farmers Welfare / Ministry of Labour",
-    "benefits": "Monthly pension upon attaining specified age (subject to contributions and rules)",
-    "eligibility": "Small and marginal farmers who meet age and contribution criteria",
-    "more_info": "https://pmkmy.gov.in/",
-    "notes": "Social security measure for elderly small/marginal farmers."
+      "short_name": "PM-KMY",
+      "translations": {
+          "english": "Pension scheme for small and marginal farmers providing post‑retirement income support.",
+          "hindi": "लघु एवं सीमांत किसानों के लिए पेंशन योजना – सेवा के बाद आय सहायता प्रदान करती।",
+          "marathi": "लघू व मर्यादित शेतकऱ्यांसाठी निवृत्तीनंतर उत्पन्न सहाय्य देणारी पेन्शन योजना.",
+          "tamil": "சிறிய மற்றும் நுனித் விவசாயிகளுக்கான ஓய்வு பின்பு வருமான ஆதரவு வழங்கும் சேமிப்பு திட்டம்."
+      }
   }
 ]
-
-

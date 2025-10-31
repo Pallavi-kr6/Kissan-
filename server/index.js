@@ -8,6 +8,7 @@ import diseaseRoutes from './routes/diseaseRoutes.js';
 import askRoutes from './routes/askRoutes.js';
 import weatherRoutes from './routes/weatherRoutes.js';
 import profitRoutes from './routes/profitRoutes.js';
+import nearbyRoutes from './routes/nearbyRoutes.js';
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use('/api/disease', diseaseRoutes);
 app.use('/api/ask', askRoutes);
 app.use('/api/weather', weatherRoutes);
 app.use('/api/calculateProfit', profitRoutes);
+app.use('/api/nearby', nearbyRoutes);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {

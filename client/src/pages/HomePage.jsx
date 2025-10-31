@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { fetchWeather } from '../services/api.js';
 import QuickNav from '../components/QuickNav.jsx';
+import NearbyServices from '../components/NearbyServices.jsx';
 
 export default function HomePage() {
   const { t } = useI18n();
@@ -48,7 +49,7 @@ export default function HomePage() {
       const data = await postCalculate(payload);
       setResult(data);
     } catch (err) {
-      setCalcErr('Failed to calculate.');
+      setCalcErr(t('calc_error'));
     }
   };
 
@@ -91,6 +92,11 @@ export default function HomePage() {
         <QuickNav className="mt-6" />
       </section>
 
+      {/* Nearby Services */}
+      <section>
+        <NearbyServices />
+      </section>
+
       {weather && (
         <section>
           <div className="rounded-2xl bg-white border border-gray-100 p-5 shadow-sm flex items-center justify-between gap-6">
@@ -116,48 +122,48 @@ export default function HomePage() {
       {/* Profit & Cost Calculator */}
       <section>
         <div className="rounded-2xl bg-white border border-gray-100 p-5 shadow-sm space-y-4">
-          <div className="text-xl font-semibold">Profit & Cost Calculator</div>
+          <div className="text-xl font-semibold">{t('calc_title')}</div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm text-gray-700 mb-1">Land Size (acres)</label>
+              <label className="block text-sm text-gray-700 mb-1">{t('calc_land_size')}</label>
               <input className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" value={calc.landSize} onChange={e=>setCalc(v=>({...v, landSize:e.target.value}))} inputMode="decimal" />
             </div>
             <div>
-              <label className="block text-sm text-gray-700 mb-1">Fertilizer Cost (₹/acre)</label>
+              <label className="block text-sm text-gray-700 mb-1">{t('calc_fertilizer_cost')}</label>
               <input className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" value={calc.fertilizerCostPerAcre} onChange={e=>setCalc(v=>({...v, fertilizerCostPerAcre:e.target.value}))} inputMode="decimal" />
             </div>
             <div>
-              <label className="block text-sm text-gray-700 mb-1">Seed Cost (₹/acre)</label>
+              <label className="block text-sm text-gray-700 mb-1">{t('calc_seed_cost')}</label>
               <input className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" value={calc.seedCostPerAcre} onChange={e=>setCalc(v=>({...v, seedCostPerAcre:e.target.value}))} inputMode="decimal" />
             </div>
             <div>
-              <label className="block text-sm text-gray-700 mb-1">Labour Cost (₹/acre)</label>
+              <label className="block text-sm text-gray-700 mb-1">{t('calc_labour_cost')}</label>
               <input className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" value={calc.labourCostPerAcre} onChange={e=>setCalc(v=>({...v, labourCostPerAcre:e.target.value}))} inputMode="decimal" />
             </div>
             <div>
-              <label className="block text-sm text-gray-700 mb-1">Selling Price (₹/quintal)</label>
+              <label className="block text-sm text-gray-700 mb-1">{t('calc_selling_price')}</label>
               <input className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" value={calc.sellingPricePerQuintal} onChange={e=>setCalc(v=>({...v, sellingPricePerQuintal:e.target.value}))} inputMode="decimal" />
             </div>
             <div>
-              <label className="block text-sm text-gray-700 mb-1">Expected Yield (quintals/acre)</label>
+              <label className="block text-sm text-gray-700 mb-1">{t('calc_yield')}</label>
               <input className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" value={calc.yieldPerAcre} onChange={e=>setCalc(v=>({...v, yieldPerAcre:e.target.value}))} inputMode="decimal" />
             </div>
           </div>
           <div className="flex gap-3">
-            <button onClick={(e)=>handleCalculate(e)} className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg transition shadow-sm">Calculate</button>
-            <button onClick={handleReset} className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-lg transition">Reset</button>
+            <button onClick={(e)=>handleCalculate(e)} className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg transition shadow-sm">{t('calc_button')}</button>
+            <button onClick={handleReset} className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-lg transition">{t('calc_reset')}</button>
           </div>
           {calcErr && <div className="text-red-600 text-sm">{calcErr}</div>}
           {result && (
             <div className="grid sm:grid-cols-3 gap-4">
-              <CalcStat title="Total Cost" value={formatInr(result.totals.cost)} />
-              <CalcStat title="Total Revenue" value={formatInr(result.totals.revenue)} />
-              <CalcStat title="Net Profit" value={formatInr(result.totals.profit)} />
+              <CalcStat title={t('calc_total_cost')} value={formatInr(result.totals.cost)} />
+              <CalcStat title={t('calc_total_revenue')} value={formatInr(result.totals.revenue)} />
+              <CalcStat title={t('calc_net_profit')} value={formatInr(result.totals.profit)} />
               <div className="sm:col-span-3 text-sm mt-1">
                 {result.perAcre.profit >= 0 ? (
-                  <span className="text-emerald-700">✅ You’ll make {formatInr(result.perAcre.profit)} profit per acre</span>
+                  <span className="text-emerald-700">✅ {t('calc_profit_msg').replace('{amount}', formatInr(result.perAcre.profit))}</span>
                 ) : (
-                  <span className="text-amber-700">⚠️ You may incur {formatInr(Math.abs(result.perAcre.profit))} loss per acre</span>
+                  <span className="text-amber-700">⚠️ {t('calc_loss_msg').replace('{amount}', formatInr(Math.abs(result.perAcre.profit)))}</span>
                 )}
               </div>
             </div>
@@ -166,6 +172,7 @@ export default function HomePage() {
       </section>
 
       <section>
+      <h1>What Kissan+ Can Do For You</h1>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           <div className="rounded-2xl bg-white border border-gray-100 p-5 shadow-sm">
             <div className="text-lg font-semibold mb-1">{t('nav_subsidy')}</div>
