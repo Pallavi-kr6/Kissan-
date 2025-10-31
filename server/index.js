@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import subsidyRoutes from './routes/subsidyRoutes.js';
 import schemeRoutes from './routes/schemeRoutes.js';
 import diseaseRoutes from './routes/diseaseRoutes.js';
+import askRoutes from './routes/askRoutes.js';
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.get('/', (req, res) => {
 app.use('/api/subsidy', subsidyRoutes);
 app.use('/api/schemes', schemeRoutes);
 app.use('/api/disease', diseaseRoutes);
+app.use('/api/ask', askRoutes);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {

@@ -46,18 +46,21 @@ export default function DiseaseDetectionPage() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <h2 className="text-2xl font-bold">{t('disease_title')}</h2>
-      <div className="bg-white p-4 rounded-lg shadow border grid gap-4 sm:grid-cols-2">
+      <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 grid gap-6 sm:grid-cols-2">
         <div>
-          <label className="block text-sm text-gray-700 mb-1">{t('disease_upload_label')}</label>
-          <input type="file" accept="image/*" onChange={onFileChange} />
+          <label className="block text-sm text-gray-700 mb-2">{t('disease_upload_label')}</label>
+          <label className="flex flex-col items-center justify-center gap-2 w-full h-40 rounded-xl border-2 border-dashed border-gray-300 hover:border-emerald-400 transition cursor-pointer">
+            <span className="text-sm text-gray-600">{file ? file.name : 'Drop image here or click to upload'}</span>
+            <input className="hidden" type="file" accept="image/*" onChange={onFileChange} />
+          </label>
           {preview && (
-            <img src={preview} alt="preview" className="mt-3 rounded border max-h-64 object-contain" />
+            <img src={preview} alt="preview" className="mt-3 rounded-xl border max-h-64 object-contain w-full bg-gray-50" />
           )}
         </div>
         <div className="flex items-end">
-          <button onClick={handleDetect} className="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded w-full">{t('disease_cta')}</button>
+          <button onClick={handleDetect} className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg w-full transition shadow-sm">{t('disease_cta')}</button>
         </div>
       </div>
 

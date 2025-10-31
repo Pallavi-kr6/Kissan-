@@ -31,28 +31,28 @@ export default function SubsidyPricesPage() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <h2 className="text-2xl font-bold">{t('subsidy_title')}</h2>
-      <div className="bg-white p-4 rounded-lg shadow border grid gap-4 sm:grid-cols-3">
+      <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 grid gap-4 sm:grid-cols-3">
         <div>
           <label className="block text-sm text-gray-700 mb-1">{t('subsidy_label_state')}</label>
-          <select className="w-full border rounded px-3 py-2" value={state} onChange={(e) => setState(e.target.value)}>
+          <select className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" value={state} onChange={(e) => setState(e.target.value)}>
             {STATES.map((s) => <option key={s} value={s}>{s}</option>)}
           </select>
         </div>
         <div>
           <label className="block text-sm text-gray-700 mb-1">{t('subsidy_label_commodity')}</label>
-          <input className="w-full border rounded px-3 py-2" value={commodity} onChange={(e) => setCommodity(e.target.value)} placeholder={t('subsidy_placeholder_commodity')} />
+          <input className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" value={commodity} onChange={(e) => setCommodity(e.target.value)} placeholder={t('subsidy_placeholder_commodity')} />
         </div>
         <div className="flex items-end">
-          <button onClick={handleFetch} className="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded w-full">{t('subsidy_cta')}</button>
+          <button onClick={handleFetch} className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg w-full transition shadow-sm">{t('subsidy_cta')}</button>
         </div>
       </div>
 
       {loading && <Loader label={t('subsidy_fetching')} />}
       {error && <div className="text-red-600">{error}</div>}
 
-      <div className="grid md:grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-2 gap-5">
         {records.map((r, idx) => (
           <Card key={idx} title={`${r.commodity} - ${r.market || r.market_center || 'Market'}`} footer={`${t('subsidy_state')} ${r.state} | ${t('subsidy_variety')} ${r.variety || 'NA'}`}>
             <div className="grid grid-cols-2 gap-2 text-sm">
