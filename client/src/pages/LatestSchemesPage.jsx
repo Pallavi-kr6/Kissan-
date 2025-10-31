@@ -14,7 +14,9 @@ export default function LatestSchemesPage() {
       setError('');
       try {
         const res = await api.get('/schemes');
-        setItems(res.data.items || []);
+        // Server now returns { count, schemes }
+        const data = Array.isArray(res.data?.schemes) ? res.data.schemes : (res.data?.items || []);
+        setItems(data);
       } catch (e) {
         setError('Failed to fetch schemes.');
       } finally {
@@ -30,9 +32,11 @@ export default function LatestSchemesPage() {
       {error && <div className="text-red-600">{error}</div>}
       <div className="grid md:grid-cols-2 gap-4">
         {items.map((it, idx) => (
-          <Card key={idx} title={it.title} footer={new Date(it.pubDate).toLocaleString()}>
-            <p className="text-sm text-gray-700 mb-2">{it.summary}</p>
-            <a className="text-green-700 underline" href={it.link} target="_blank" rel="noreferrer">Read more</a>
+          <Card key={idx} title={it.name || it.title} footer={it.ministry || ''}>
+            <p className="text-sm text-gray-700 mb-2">{it.description || it.summary}</p>
+            {it.more_info || it.link ? (
+              <a className="text-green-700 underline" href={(it.more_info || it.link)} target="_blank" rel="noreferrer">Read more</a>
+            ) : null}
           </Card>
         ))}
       </div>

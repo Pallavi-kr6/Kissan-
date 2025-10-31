@@ -1,0 +1,84 @@
+[
+  {
+    "name": "PM-Kisan (Pradhan Mantri Kisan Samman Nidhi)",
+    "short_name": "PM-Kisan",
+    "description": "Direct income support to small and marginal farmer families to supplement their financial needs.",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "benefits": "Periodic direct benefit transfers to eligible farmer families",
+    "eligibility": "Land-holding farmer families (subject to scheme rules and exclusions)",
+    "more_info": "https://pmkisan.gov.in/",
+    "notes": "One of the flagship income support schemes for farmers."
+  },
+  {
+    "name": "PMFBY (Pradhan Mantri Fasal Bima Yojana)",
+    "short_name": "PMFBY",
+    "description": "Crop insurance scheme providing coverage and financial support to farmers suffering crop loss or damage from natural calamities, pests, and diseases.",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "benefits": "Compensation/claims for crop losses to insured farmers",
+    "eligibility": "Farmers growing notified crops in notified areas (per scheme guidelines)",
+    "more_info": "https://pmfby.gov.in/",
+    "notes": "Operates through empanelled insurance companies; premium rates and coverage depend on crop/season."
+  },
+  {
+    "name": "Kisan Credit Card (KCC)",
+    "short_name": "KCC",
+    "description": "Provides farmers with timely access to credit for crop production, equipment purchases and allied agricultural activities.",
+    "ministry": "Ministry of Finance / NABARD (implementation by banks)",
+    "benefits": "Short-term and medium-term loans at concessional rates, working capital support",
+    "eligibility": "Farmers with land records; as permitted banks may cover tenant farmers and others",
+    "more_info": "https://www.nabard.org/",
+    "notes": "Widely used channel for agricultural credit and subsidies."
+  },
+  {
+    "name": "e-NAM (National Agriculture Market)",
+    "short_name": "e-NAM",
+    "description": "An online trading platform that connects mandi yards across India for transparent pricing and better market access.",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "benefits": "Better price discovery, pan-India buyer access, transparent auctioning",
+    "eligibility": "Registered farmers/traders on the platform",
+    "more_info": "https://enam.gov.in/",
+    "notes": "Promotes market integration and competitive pricing for agricultural produce."
+  },
+  {
+    "name": "Agriculture Infrastructure Fund",
+    "short_name": "AIF",
+    "description": "Provides financial assistance for development of post-harvest infrastructure, storage, and value chain projects.",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "benefits": "Credit-linked support/loans and incentives for infrastructure projects",
+    "eligibility": "Farmers, Farmer Producer Organizations (FPOs), agri-entrepreneurs, startups and others",
+    "more_info": "https://agriinfra.dac.gov.in/",
+    "notes": "Encourages investment in agri-infrastructure to reduce post-harvest losses."
+  },
+  {
+    "name": "Rashtriya Krishi Vikas Yojana (RKVY)",
+    "short_name": "RKVY",
+    "description": "Scheme to boost agricultural productivity and farmer incomes through state-level projects, grants and innovations.",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "benefits": "Grants for state-level agri-projects, infrastructure and innovation interventions",
+    "eligibility": "State implementing agencies and beneficiaries under state projects",
+    "more_info": "https://data.gov.in/",
+    "notes": "Supports state-driven interventions to increase agriculture production."
+  },
+  {
+    "name": "Soil Health Card (SHC) Scheme",
+    "short_name": "Soil Health Card",
+    "description": "Provides farmers with soil test reports and recommendations on fertilizer and nutrient application.",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "benefits": "Soil nutrient status, crop-wise fertilizer advice, improved input-use efficiency",
+    "eligibility": "Farmers submitting soil samples for testing",
+    "more_info": "https://soilhealth.dac.gov.in/",
+    "notes": "Aimed at improving productivity and reducing excess fertilizer use."
+  },
+  {
+    "name": "PM Kisan MaanDhan Yojana (PM-KMY)",
+    "short_name": "PM-KMY",
+    "description": "Pension scheme for small and marginal farmers providing post-retirement income support.",
+    "ministry": "Ministry of Agriculture and Farmers Welfare / Ministry of Labour",
+    "benefits": "Monthly pension upon attaining specified age (subject to contributions and rules)",
+    "eligibility": "Small and marginal farmers who meet age and contribution criteria",
+    "more_info": "https://pmkmy.gov.in/",
+    "notes": "Social security measure for elderly small/marginal farmers."
+  }
+]
+
+
