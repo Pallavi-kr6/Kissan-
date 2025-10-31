@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Card from '../components/Card.jsx';
 import Loader from '../components/Loader.jsx';
+import { useI18n } from '../i18n.jsx';
 import { api } from '../services/api.js';
 
 const STATES = [
@@ -8,6 +9,7 @@ const STATES = [
 ];
 
 export default function SubsidyPricesPage() {
+  const { t } = useI18n();
   const [state, setState] = useState('Maharashtra');
   const [commodity, setCommodity] = useState('Tomato');
   const [loading, setLoading] = useState(false);
@@ -22,7 +24,7 @@ export default function SubsidyPricesPage() {
       const res = await api.get('/subsidy', { params: { state, commodity } });
       setRecords(res.data.records || []);
     } catch (e) {
-      setError('Failed to fetch data.');
+      setError(t('subsidy_error'));
     } finally {
       setLoading(false);
     }
@@ -30,34 +32,34 @@ export default function SubsidyPricesPage() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-bold">Subsidy & Prices</h2>
+      <h2 className="text-2xl font-bold">{t('subsidy_title')}</h2>
       <div className="bg-white p-4 rounded-lg shadow border grid gap-4 sm:grid-cols-3">
         <div>
-          <label className="block text-sm text-gray-700 mb-1">Select State</label>
+          <label className="block text-sm text-gray-700 mb-1">{t('subsidy_label_state')}</label>
           <select className="w-full border rounded px-3 py-2" value={state} onChange={(e) => setState(e.target.value)}>
             {STATES.map((s) => <option key={s} value={s}>{s}</option>)}
           </select>
         </div>
         <div>
-          <label className="block text-sm text-gray-700 mb-1">Enter Crop Name</label>
-          <input className="w-full border rounded px-3 py-2" value={commodity} onChange={(e) => setCommodity(e.target.value)} placeholder="e.g. Tomato" />
+          <label className="block text-sm text-gray-700 mb-1">{t('subsidy_label_commodity')}</label>
+          <input className="w-full border rounded px-3 py-2" value={commodity} onChange={(e) => setCommodity(e.target.value)} placeholder={t('subsidy_placeholder_commodity')} />
         </div>
         <div className="flex items-end">
-          <button onClick={handleFetch} className="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded w-full">Fetch Subsidy Prices</button>
+          <button onClick={handleFetch} className="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded w-full">{t('subsidy_cta')}</button>
         </div>
       </div>
 
-      {loading && <Loader label="Fetching data..." />}
+      {loading && <Loader label={t('subsidy_fetching')} />}
       {error && <div className="text-red-600">{error}</div>}
 
       <div className="grid md:grid-cols-2 gap-4">
         {records.map((r, idx) => (
-          <Card key={idx} title={`${r.commodity} - ${r.market || r.market_center || 'Market'}`} footer={`State: ${r.state} | Variety: ${r.variety || 'NA'}`}>
+          <Card key={idx} title={`${r.commodity} - ${r.market || r.market_center || 'Market'}`} footer={`${t('subsidy_state')} ${r.state} | ${t('subsidy_variety')} ${r.variety || 'NA'}`}>
             <div className="grid grid-cols-2 gap-2 text-sm">
-              <div><span className="text-gray-600">Modal Price:</span> <span className="font-semibold">{r.modal_price}</span></div>
-              <div><span className="text-gray-600">Min Price:</span> <span className="font-semibold">{r.min_price}</span></div>
-              <div><span className="text-gray-600">Max Price:</span> <span className="font-semibold">{r.max_price}</span></div>
-              <div><span className="text-gray-600">Arrival Date:</span> <span className="font-semibold">{r.arrival_date}</span></div>
+              <div><span className="text-gray-600">{t('subsidy_modal_price')}</span> <span className="font-semibold">{r.modal_price}</span></div>
+              <div><span className="text-gray-600">{t('subsidy_min_price')}</span> <span className="font-semibold">{r.min_price}</span></div>
+              <div><span className="text-gray-600">{t('subsidy_max_price')}</span> <span className="font-semibold">{r.max_price}</span></div>
+              <div><span className="text-gray-600">{t('subsidy_arrival_date')}</span> <span className="font-semibold">{r.arrival_date}</span></div>
             </div>
           </Card>
         ))}

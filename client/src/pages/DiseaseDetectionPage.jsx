@@ -2,8 +2,10 @@ import { useState } from 'react';
 import Card from '../components/Card.jsx';
 import Loader from '../components/Loader.jsx';
 import { api } from '../services/api.js';
+import { useI18n } from '../i18n.jsx';
 
 export default function DiseaseDetectionPage() {
+  const { t } = useI18n();
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState('');
   const [loading, setLoading] = useState(false);
@@ -25,7 +27,7 @@ export default function DiseaseDetectionPage() {
 
   async function handleDetect() {
     if (!file) {
-      setError('Please upload an image first.');
+      setError(t('disease_err_upload'));
       return;
     }
     setLoading(true);
@@ -37,7 +39,7 @@ export default function DiseaseDetectionPage() {
       const res = await api.post('/disease', form, { headers: { 'Content-Type': 'multipart/form-data' } });
       setResult(res.data.result || null);
     } catch (e) {
-      setError('Failed to detect disease.');
+      setError(t('disease_err_fail'));
     } finally {
       setLoading(false);
     }
@@ -45,27 +47,27 @@ export default function DiseaseDetectionPage() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-bold">Disease Detection</h2>
+      <h2 className="text-2xl font-bold">{t('disease_title')}</h2>
       <div className="bg-white p-4 rounded-lg shadow border grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="block text-sm text-gray-700 mb-1">Upload Leaf Image</label>
+          <label className="block text-sm text-gray-700 mb-1">{t('disease_upload_label')}</label>
           <input type="file" accept="image/*" onChange={onFileChange} />
           {preview && (
             <img src={preview} alt="preview" className="mt-3 rounded border max-h-64 object-contain" />
           )}
         </div>
         <div className="flex items-end">
-          <button onClick={handleDetect} className="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded w-full">Detect Disease</button>
+          <button onClick={handleDetect} className="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded w-full">{t('disease_cta')}</button>
         </div>
       </div>
 
-      {loading && <Loader label="Analyzing image..." />}
+      {loading && <Loader label={t('disease_analyzing')} />}
       {error && <div className="text-red-600">{error}</div>}
 
       {result && (
-        <Card title="Diagnosis Result">
-          <p><span className="font-semibold">Disease:</span> {result.disease}</p>
-          <p className="mt-1"><span className="font-semibold">Suggestion:</span> {result.suggestion}</p>
+        <Card title={t('disease_result_title')}>
+          <p><span className="font-semibold">{t('disease_result_disease')}</span> {result.disease}</p>
+          <p className="mt-1"><span className="font-semibold">{t('disease_result_suggestion')}</span> {result.suggestion}</p>
         </Card>
       )}
     </div>
